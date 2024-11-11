@@ -1,0 +1,37 @@
+.status-card {
+  text-align: center;
+}
+
+.status-badge {
+  font-size: 1.2em;
+}
+
+ion-list-header {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 1.5em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  .status-card {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+}

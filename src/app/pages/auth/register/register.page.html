@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registrar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="register-container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+      <ion-item>
+        <ion-label position="floating">Nome Completo</ion-label>
+        <ion-input type="text" formControlName="name" autocomplete="name"></ion-input>
+        <ion-note slot="error"
+          *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.errors?.['required']">
+          Nome é obrigatório
+        </ion-note>
+        <ion-note slot="error"
+          *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.errors?.['minlength']">
+          Nome deve ter no mínimo 3 caracteres
+        </ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" formControlName="email" autocomplete="email"></ion-input>
+        <ion-note slot="error"
+          *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['required']">
+          Email é obrigatório
+        </ion-note>
+        <ion-note slot="error"
+          *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['email']">
+          Email inválido
+        </ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Número de Telefone</ion-label>
+        <ion-input type="tel" formControlName="phoneNumber" placeholder="258840000000"></ion-input>
+        <ion-note slot="error"
+          *ngIf="registerForm.get('phoneNumber')?.touched && registerForm.get('phoneNumber')?.errors?.['required']">
+          Número de telefone é obrigatório
+        </ion-note>
+        <ion-note slot="error"
+          *ngIf="registerForm.get('phoneNumber')?.touched && registerForm.get('phoneNumber')?.errors?.['pattern']">
+          Formato inválido. Use: 258 + número moçambicano
+        </ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">BI/DIRE</ion-label>
+        <ion-input type="text" formControlName="documentNumber"></ion-input>
+        <ion-note slot="error"
+          *ngIf="registerForm.get('documentNumber')?.touched && registerForm.get('documentNumber')?.errors?.['required']">
+          Número do documento é obrigatório
+        </ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input [type]="showPassword ? 'text' : 'password'" formControlName="password"></ion-input>
+        <ion-button slot="end" fill="clear" (click)="togglePassword()">
+          <ion-icon [name]="showPassword ? 'eye-off' : 'eye'"></ion-icon>
+        </ion-button>
+        <ion-note slot="error"
+          *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.errors?.['required']">
+          Senha é obrigatória
+        </ion-note>
+        <ion-note slot="error"
+          *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.errors?.['minlength']">
+          Senha deve ter no mínimo 6 caracteres
+        </ion-note>
+      </ion-item>
+
+      <ion-button expand="block" type="submit" [disabled]="registerForm.invalid" class="ion-margin-top">
+        Criar Conta
+      </ion-button>
+
+      <ion-button expand="block" fill="clear" routerLink="/login">
+        Já tem conta? Faça login
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

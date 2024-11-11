@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar color="primary">
+      <ion-title size="large">Perfil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="profile-header">
+    <ion-avatar>
+      <img src="assets/do-utilizador.png" alt="User Avatar" />
+    </ion-avatar>
+    <h2>{{ user?.name }}</h2>
+    <p>{{ user?.email }}</p>
+  </div>
+
+  <ion-list *ngIf="user">
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input [(ngModel)]="user.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input [(ngModel)]="user.email" type="email" readonly></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Número de Telefone</ion-label>
+      <ion-input [(ngModel)]="user.phoneNumber" type="tel"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Número do Documento</ion-label>
+      <ion-input [(ngModel)]="user.documentNumber"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="success" (click)="updateUserProfile()" class="update-button">
+    Atualizar Perfil
+  </ion-button>
+</ion-content>

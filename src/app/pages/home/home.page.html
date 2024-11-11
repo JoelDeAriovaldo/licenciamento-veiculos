@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1>Bem-vindo ao aplicativo!</h1>
+  <p>Aqui você pode gerenciar suas licenças de circulação de veículos.</p>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="4">
+        <ion-card class="status-card">
+          <ion-card-header>
+            <ion-card-title>Ativas</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-badge color="success" class="status-badge">{{ activeLicensesCount }}</ion-badge>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12" size-md="4">
+        <ion-card class="status-card">
+          <ion-card-header>
+            <ion-card-title>Pendentes</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-badge color="warning" class="status-badge">{{ pendingLicensesCount }}</ion-badge>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12" size-md="4">
+        <ion-card class="status-card">
+          <ion-card-header>
+            <ion-card-title>Expiradas</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-badge color="danger" class="status-badge">{{ expiredLicensesCount }}</ion-badge>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Licenças Recentes</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let license of licenses | slice:0:5">
+      <ion-label>
+        <h2>{{ license.vehiclePlate }}</h2>
+        <p>{{ license.vehicleModel }} - {{ license.vehicleYear }}</p>
+        <p><strong>Status:</strong> {{ license.status }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" routerLink="/create-license">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

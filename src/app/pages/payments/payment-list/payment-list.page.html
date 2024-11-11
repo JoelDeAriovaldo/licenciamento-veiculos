@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Lista de Licenças</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar color="primary">
+      <ion-title size="large">Lista de Licenças</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item *ngFor="let license of licenses" (click)="viewPaymentDetail(license.id)" lines="inset">
+      <ion-label>
+        <h2>{{ license.vehiclePlate }}</h2>
+        <p>{{ license.vehicleModel }} - {{ license.vehicleYear }}</p>
+      </ion-label>
+      <ion-badge [color]="license.status === 'PAID' ? 'success' : 'danger'">
+        {{ license.status }}
+      </ion-badge>
+    </ion-item>
+  </ion-list>
+</ion-content>

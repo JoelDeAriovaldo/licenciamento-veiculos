@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Criar Licença</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="licenseForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Placa do Veículo</ion-label>
+      <ion-input type="text" formControlName="vehiclePlate"></ion-input>
+      <ion-note slot="error"
+        *ngIf="licenseForm.get('vehiclePlate')?.touched && licenseForm.get('vehiclePlate')?.errors?.['required']">
+        Placa do veículo é obrigatória
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Tipo de Veículo</ion-label>
+      <ion-input type="text" formControlName="vehicleType"></ion-input>
+      <ion-note slot="error"
+        *ngIf="licenseForm.get('vehicleType')?.touched && licenseForm.get('vehicleType')?.errors?.['required']">
+        Tipo de veículo é obrigatório
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Modelo do Veículo</ion-label>
+      <ion-input type="text" formControlName="vehicleModel"></ion-input>
+      <ion-note slot="error"
+        *ngIf="licenseForm.get('vehicleModel')?.touched && licenseForm.get('vehicleModel')?.errors?.['required']">
+        Modelo do veículo é obrigatório
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Ano do Veículo</ion-label>
+      <ion-input type="number" formControlName="vehicleYear"></ion-input>
+      <ion-note slot="error"
+        *ngIf="licenseForm.get('vehicleYear')?.touched && licenseForm.get('vehicleYear')?.errors?.['required']">
+        Ano do veículo é obrigatório
+      </ion-note>
+      <ion-note slot="error"
+        *ngIf="licenseForm.get('vehicleYear')?.touched && licenseForm.get('vehicleYear')?.errors?.['min']">
+        Ano do veículo inválido
+      </ion-note>
+      <ion-note slot="error"
+        *ngIf="licenseForm.get('vehicleYear')?.touched && licenseForm.get('vehicleYear')?.errors?.['max']">
+        Ano do veículo inválido
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Número do Documento</ion-label>
+      <ion-input type="text" formControlName="documentNumber"></ion-input>
+      <ion-note slot="error"
+        *ngIf="licenseForm.get('documentNumber')?.touched && licenseForm.get('documentNumber')?.errors?.['required']">
+        Número do documento é obrigatório
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Data de Expiração</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" formControlName="expiryDate"></ion-datetime>
+      <ion-note slot="error"
+        *ngIf="licenseForm.get('expiryDate')?.touched && licenseForm.get('expiryDate')?.errors?.['required']">
+        Data de expiração é obrigatória
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Valor</ion-label>
+      <ion-input type="number" formControlName="amount"></ion-input>
+      <ion-note slot="error"
+        *ngIf="licenseForm.get('amount')?.touched && licenseForm.get('amount')?.errors?.['required']">
+        Valor é obrigatório
+      </ion-note>
+      <ion-note slot="error" *ngIf="licenseForm.get('amount')?.touched && licenseForm.get('amount')?.errors?.['min']">
+        Valor inválido
+      </ion-note>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="licenseForm.invalid" class="ion-margin-top">
+      Criar Licença
+    </ion-button>
+  </form>
+</ion-content>s

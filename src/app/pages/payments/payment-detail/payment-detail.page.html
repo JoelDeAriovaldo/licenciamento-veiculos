@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalhes do Pagamento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="license">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Detalhes do Pagamento</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Placa: {{ license.vehiclePlate }}</p>
+      <p>Valor: {{ license.amount | currency }}</p>
+      <p>Status: {{ license.status }}</p>
+      <p>Data de Criação: {{ license.createdAt | date }}</p>
+      <p>Última Atualização: {{ license.updatedAt | date }}</p>
+
+      <ng-container *ngIf="license.status === 'PENDING'">
+        <ion-item>
+          <ion-label>Provedor</ion-label>
+          <ion-select [(ngModel)]="selectedProvider">
+            <ion-select-option *ngFor="let provider of paymentProviders | keyvalue" [value]="provider.value">
+              {{ provider.value }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Número de Telefone</ion-label>
+          <ion-input [(ngModel)]="phoneNumber" type="tel"></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" (click)="initiatePayment()">Concluir Pagamento</ion-button>
+      </ng-container>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

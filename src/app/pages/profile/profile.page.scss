@@ -1,0 +1,28 @@
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #f0f0f5;
+}
+
+.profile-header ion-avatar {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.profile-header h2 {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.profile-header p {
+  font-size: 0.9em;
+  color: #888;
+}
+
+.update-button {
+  margin: 20px;
+}

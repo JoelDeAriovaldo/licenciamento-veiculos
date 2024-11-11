@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Histórico de Licenças Pagas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Histórico de Licenças Pagas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item *ngFor="let license of licenses">
+      <ion-label>
+        <h2>{{ license.vehiclePlate }}</h2>
+        <p>{{ license.vehicleModel }} - {{ license.vehicleYear }}</p>
+        <p>Status: {{ license.status }}</p>
+        <p>Data de Criação: {{ license.createdAt | date }}</p>
+        <p>Última Atualização: {{ license.updatedAt | date }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
