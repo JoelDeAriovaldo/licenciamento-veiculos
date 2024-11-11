@@ -1,0 +1,7 @@
+{
+  "name": "licenciamento-veiculos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
